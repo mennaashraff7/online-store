@@ -25,10 +25,43 @@ h1{
     width: 90%;
     margin: 0 auto;
 }
-.img{
+img{
     margin: 0 auto;
     width: 100%;
+    z-index: 0;
+    position: relative;
+    
 }
+img:hover{
+    
+}
+.btn2{
+    position: absolute;
+    right: 35%;
+    top: 40%;
+    background-color: pink;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius:1.5em;
+    display: none;
+}
+.btn2:hover{
+    transition: 0.9s;
+    box-shadow: 2px 3px 5px grey;
+}
+/*.hoverImage:hover{
+ 
+   width: 102%;
+     -webkit-transform:scale(1.1); /*Webkit: Scale up image to 1.2x original size*/
+/*
+-moz-transform:scale(1.1); /*Mozilla scale version*/
+/*-o-transform:scale(1.1); /*Opera scale version*/
+/*box-shadow:0px 0px 30px gray; /*CSS3 shadow: 30px blurred shadow all around image*/
+/*-webkit-box-shadow:0px 0px 30px gray; /*Safari shadow version*/
+/*-moz-box-shadow:0px 0px 30px gray; /*Mozilla shadow version*/
+/*opacity: 1;
+} */
 .col-12{
     margin: 0 auto;
     text-align: center;
