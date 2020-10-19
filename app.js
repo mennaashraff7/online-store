@@ -61,4 +61,5 @@ images.forEach(image => image.addEventListener('click',function(e){
          sum+=parseInt(image.lastElementChild.lastElementChild.textContent.substr(1));
          console.log(sum);
     
-});}
+}));
+}
