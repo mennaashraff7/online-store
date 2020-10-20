@@ -25,6 +25,8 @@ btn.addEventListener('click',addToCarts);
 hoverImage.forEach(hover => hover.addEventListener('mouseleave',function(e){
 
 hover.style.width='100%';
+hover.style.removeProperty(" -webkit-transform");
+hover.style.removeProperty(" -o-transform");   
 hover.style.removeProperty("-webkit-box-shadow");
 hover.style.removeProperty("-moz-box-shadow ");
 hover.style.removeProperty("box-shadow ");
