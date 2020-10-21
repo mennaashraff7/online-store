@@ -28,7 +28,7 @@
                  <div class="col-lg-6">
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                      <div class="navbar-nav">
-                        <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-link" href="#">shop</a>
                         <a class="nav-link" href="#">about</a>
                         <a class="nav-link" href="#">contact</a>
@@ -38,7 +38,7 @@
                        <div class="col-lg-6 clear ">
                            <div class="collapse navbar-collapse right" id="navbarNavAltMarkup">
                          <div class="navbar-nav ">
-                           <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i>&nbsp; cart</a></div>
+                           <a class="nav-link" href="#carts"><i class="fas fa-shopping-cart"></i>&nbsp; cart</a></div>
                            </div>
                  </div>
                  </div>
@@ -68,21 +68,43 @@
   </a>
 </div>
         </section>
-        <section class="conent">
+        <section class="content">
+            <div id="carts" class="cartBox">
+		<div class="cart">
+			<i class="fa fa-close"></i>
+			<h1>Cart</h1>
+             <section class="cart-content">
+            <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">remove</th>
+      
+    </tr>
+  </thead>
+  <tbody id="tbody">
+    
+  </tbody>
+</table>
+        </section>
+		</div>
+	</div>
             <h1 style="margin:30px">NEW ARRIVAL</h1>
             <div class="items">
                 <div class="row">
-                      <div class="col-md-6 col-lg-3 col-12 item ">
+                      <div class="col-md-6 col-lg-3 col-12 item " item>
                           <div class="hoverImage"><img src="img/arrival1.png">
-                          <button class="btn2">add to cart <div class="hover"></div></button>
+                              <button  class="btn2">add to cart <div class="hover"></div></button>
                           </div>
                           <div class="caption">
                          <p>Knitted Jumper</p>
                          <p>&#36;30</p>
                           </div>
                       </div>
-                    <div class="col-md-6 col-lg-3 col-12 item"><div class="hoverImage"><img src="img/arrival2.png">
-                        <button class="btn2">add to cart</button>
+                    <div item1 class="col-md-6 col-lg-3 col-12 item"><div class="hoverImage"><img src="img/arrival2.png">
+                        <button id="1" class="btn2">add to cart</button>
                         </div>
                           <div class="caption">
                          <p>Knitted Jumper</p>
