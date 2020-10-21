@@ -50,19 +50,19 @@ img:hover{
     transition: 0.9s;
     box-shadow: 2px 3px 5px grey;
 }
-/*.hoverImage:hover{
+.hoverImage:hover{
  
-   width: 102%;
-     -webkit-transform:scale(1.1); /*Webkit: Scale up image to 1.2x original size*/
-/*
--moz-transform:scale(1.1); /*Mozilla scale version*/
-/*-o-transform:scale(1.1); /*Opera scale version*/
-/*box-shadow:0px 0px 30px gray; /*CSS3 shadow: 30px blurred shadow all around image*/
-/*-webkit-box-shadow:0px 0px 30px gray; /*Safari shadow version*/
-/*-moz-box-shadow:0px 0px 30px gray; /*Mozilla shadow version*/
-/*opacity: 1;
-} */
-/*cart box*/
+   width: 100%;
+     -webkit-transform:scale(1.05); /*Webkit: Scale up image to 1.2x original size*/
+
+-moz-transform:scale(1.05); /*Mozilla scale version*/
+-o-transform:scale(1.05); /*Opera scale version*/
+box-shadow:0px 0px 30px gray; /*CSS3 shadow: 30px blurred shadow all around image*/
+-webkit-box-shadow:0px 0px 30px gray; /*Safari shadow version*/
+-moz-box-shadow:0px 0px 30px gray; /*Mozilla shadow version*/
+opacity: 1;
+} 
+
 .cartBox{
 	position: fixed;
 	top: 0;
@@ -79,6 +79,13 @@ img:hover{
 }
 .cartBox.active{
 	transform: scale(1);
+}
+.sum{
+    text-align: right;
+    margin-right: 150px;
+    font-size: 20px;
+    font-weight: bold;
+    
 }
 .cartBox .cart{
 	position: relative;

@@ -1,49 +1,35 @@
 
 const cart = document.querySelector('.fa-shopping-cart');
 const images = document.querySelectorAll(`.row `);
-const  hoverImage =document.querySelectorAll(`.hoverImage`);
+const hoverImage = document.querySelectorAll(`.hoverImage`);
 const buttons = document.querySelectorAll(`.btn2`);
 const tbody = document.getElementById('tbody');
 const cartBox = document.getElementById("carts");
+const sumDiv=document.querySelector(`.sum`);
+
+
 
 var sum=0;
-console.log(tbody);
-console.log(hoverImage);
-hoverImage.forEach(hover => hover.addEventListener('mouseover',function(e){
-    var css = { " width": "102%",  " -webkit-transform":"scale(1.1)", "-moz-transform":"scale(1.1)" ,   
-              "-o-transform":"scale(1.1)" ,"box-shadow":"0px 0px 30px gray","-webkit-box-shadow":"0px 0px 30px gray",
-                " -moz-box-shadow  ":" 0px 0px 30px gray","opacity": "1",  "transition": "0.9s"};
 
- for(var prop in css) {
-   hover.style[prop] = css[prop];
-}  
-    
- 
+
+hoverImage.forEach(hover => hover.addEventListener('mouseover',function(e){
  btn= hover.lastElementChild;
-    
 btn.style.display="block";    
 }));
 
-function createTable(){
-    var tr = document.createElement('tr');
-        tr.classList.add("table-danger");
-    tbody.appendChild(tr);
-    var th = document.createElement('th');
-        th.setAttribute('scope','row');
-    var td1= document.createElement('td');
-    
-    
-    
-}
+hoverImage.forEach(hover => hover.addEventListener('mouseleave',function(e){
+var btn= hover.lastElementChild;
+btn.style.display="none";  
+}));
 
 buttons.forEach(btn => btn.addEventListener('click',function(e){
+    var quantity =1;
     
     var clickedbtn = e.target;
    var item = clickedbtn.parentElement.parentElement;
-     //   console.log(item.firstElementChild.firstElementChild.src);
-     //   console.log(item.lastElementChild.lastElementChild.textContent);
-   sum+=parseInt(item.lastElementChild.lastElementChild.textContent.substr(1));
-        // console.log(sum);
+   
+    //create table content
+    
      var tr = document.createElement('tr');
         tr.classList.add("table-danger");
     tbody.appendChild(tr);
@@ -59,15 +45,27 @@ buttons.forEach(btn => btn.addEventListener('click',function(e){
     th.appendChild(p);
     tr.appendChild(th);
      var td1= document.createElement('td');
-     var input =document.createElement('input');
-         input.setAttribute('type','number');
-         input.classList.add('cart-input');
-    
-    td1.appendChild(input);
-        
-    tr.appendChild(td1);
+     var span1 = document.createElement('span');
+     var i2= document.createElement('i');
+     i2.classList.add('fas');
+     i2.classList.add('fa-minus-circle');
+     i2.classList.add('minus');
+     span1.appendChild(i2);
+     td1.appendChild(span1);
+     var span2 = document.createElement('span');
+     span2.classList.add('quantity');
+     span2.textContent=quantity;
+     td1.appendChild(span2)
+     var span3 = document.createElement('span');
+     var i3= document.createElement('i');
+     i3.classList.add('fas');
+     i3.classList.add('fa-plus-circle');
+    i3.classList.add('plus');
+      span3.appendChild(i3);
+     td1.appendChild(span3);
+     tr.appendChild(td1);
      var td2= document.createElement('td');
-         td2.textContent=item.lastElementChild.lastElementChild.textContent;
+     td2.textContent=item.lastElementChild.lastElementChild.textContent;
     tr.appendChild(td2);
     var td3 = document.createElement('td');
     var i= document.createElement('i');
@@ -76,63 +74,81 @@ buttons.forEach(btn => btn.addEventListener('click',function(e){
     i.classList.add('fa-lg');
     td3.appendChild(i);
     tr.appendChild(td3);
+      sum+=parseInt(item.lastElementChild.lastElementChild.textContent.substr(1));
     
-    var  inputSum = document.querySelector('.cart-input');
-    sum+=parseInt(inputSum.value)*parseInt(item.lastElementChild.lastElementChild.textContent.substr(1));
-        console.log(sum);
-    
+
     }));
 
-hoverImage.forEach(hover => hover.addEventListener('mouseleave',function(e){
-
-hover.style.width='100%';
-hover.style.removeProperty(" -webkit-transform");
-hover.style.removeProperty(" -o-transform");   
-hover.style.removeProperty("-webkit-box-shadow");
-hover.style.removeProperty("-moz-box-shadow ");
-hover.style.removeProperty("box-shadow ");
-hover.style.removeProperty("opacity");
-hover.style.removeProperty("-moz-transform");
-hover.style.removeProperty("transition");
-
-var btn= hover.lastElementChild;
+function plus(){
+          
+     const plus = document.querySelectorAll(`.plus`); 
+    plus.forEach(p => p.addEventListener('click',function(e){
+         var selectedSpan = e.target.parentElement.previousElementSibling;
     
-btn.style.display="none";
-    
-    
-    
-    
-    
-    
-}));
-
-
-
-
-
-
-
-function addToCarts(){
-
-images.forEach(image => {
-    console.log(image);
-
-       image.classList.add('clicked');
-        
-        console.log(image.firstElementChild.firstElementChild.src);
-        console.log(image.lastElementChild.lastElementChild.textContent);
+         var price = e.target.parentElement.parentElement.nextElementSibling.textContent.substr(1);
+   
+      
+          selectedSpan.textContent= parseInt(selectedSpan.textContent)+1;
          
-         sum+=parseInt(image.lastElementChild.lastElementChild.textContent.substr(1));
-         console.log(sum);
-    
-});
+         sum+=parseInt(price);
+        console.log("sum:" + sum);
+        sumDiv.textContent="sum: $"+sum;
+        
+    })); 
 }
+ function minus(){
+     
+     const minus = document.querySelectorAll(`.minus`); 
+      minus.forEach(m => m.addEventListener('click',function(e){
+        
+         var selectedSpan = e.target.parentElement.nextElementSibling;
+ 
+         var price = e.target.parentElement.parentElement.nextElementSibling.textContent.substr(1);
+
+           if(selectedSpan.textContent=="1")return;
+         
+          selectedSpan.textContent= parseInt(selectedSpan.textContent)-1;
+          sum-=parseInt(price);
+          
+        console.log("sum:" + sum);
+        
+          sumDiv.textContent="sum: $"+sum;
+    })); 
+}
+
+function deleteItem(){
+    const deleteBtns = document.querySelectorAll(`.fa-trash-alt`);
+    deleteBtns.forEach(d => d.addEventListener('click',function(e){
+      e.target.parentElement.parentElement.remove(); 
+     var price =  e.target.parentElement.previousElementSibling.textContent.substr(1);
+        
+    var quantity =e.target.parentElement.previousElementSibling.previousElementSibling.lastElementChild.previousElementSibling.textContent;
+        
+     console.log("quantity:" + quantity); 
+         console.log("price:" + price); 
+     sum-=parseInt(price)*parseInt(quantity);
+       console.log("sum:" + sum);  
+        sumDiv.textContent="sum: $"+sum;
+    
+    
+    
+    
+     
+    }));
+}
+
 
 cart.addEventListener('click',function(e){
     
      cartBox.classList.add('active'); 
+    plus();
+    minus();
+    deleteItem();
+    console.log("sum:" + sum);
+    sumDiv.textContent="sum: $"+sum;
     
 });
+
 
 
  cartBox.firstElementChild.firstElementChild.addEventListener('click',function(e){
@@ -140,6 +156,8 @@ cart.addEventListener('click',function(e){
      cartBox.classList.remove('active'); 
     
 });
+
+
 
 
 
