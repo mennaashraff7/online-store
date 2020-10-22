@@ -1,5 +1,5 @@
 
-const cart = document.querySelector('.fa-shopping-cart');
+const cart = document.querySelector('.navbar-nav .cart');
 const images = document.querySelectorAll(`.row `);
 const hoverImage = document.querySelectorAll(`.hoverImage`);
 const buttons = document.querySelectorAll(`.btn2`);
@@ -75,7 +75,10 @@ buttons.forEach(btn => btn.addEventListener('click',function(e){
     td3.appendChild(i);
     tr.appendChild(td3);
       sum+=parseInt(item.lastElementChild.lastElementChild.textContent.substr(1));
-    
+     
+     clickedbtn.style.background = "grey";
+     clickedbtn.textContent =  "added to cart";
+     clickedbtn.classList.add("disabled");
 
     }));
 
@@ -129,12 +132,17 @@ function deleteItem(){
      sum-=parseInt(price)*parseInt(quantity);
        console.log("sum:" + sum);  
         sumDiv.textContent="sum: $"+sum;
-    
-    
-    
-    
-     
+      
     }));
+    
+      
+    buttons.forEach(btn =>{
+      if(btn.classList[1] == "disabled" ){
+         btn.style.background = "pink";
+         btn.textContent =  "add to cart";
+         btn.classList.remove("disabled");
+        }
+    });
 }
 
 
